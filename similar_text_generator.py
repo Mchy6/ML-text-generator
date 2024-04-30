@@ -1,7 +1,8 @@
+import random
 import re
 
 
-def generate_similar_text(context: int = 3, input_text: str = None) -> str:
+def generate_similar_text(output_len: int = 100, context: int = 3, input_text: str = None) -> str:
     tokens: list[str] = list()
     unique_words: set[str] = set()
 
@@ -35,8 +36,15 @@ def generate_similar_text(context: int = 3, input_text: str = None) -> str:
         context_tokens.append(token)
         context_tokens.pop(0)
 
+    context_tokens = list()
     for i in range(context):
         context_tokens.append("")
 
+    for i in range(output_len):
+        context_tuple = tuple(context_tokens)
+        random_index: int = random.randint(0, len(wordmap[context_tuple]) - 1)
+        print(wordmap[context_tuple][random_index], end=" ")
+        context_tokens.append(wordmap[context_tuple][random_index])
+        context_tokens.pop(0)
 
     return "Not implemented yet"
