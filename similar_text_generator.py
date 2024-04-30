@@ -2,7 +2,7 @@ import random
 import re
 
 
-def generate_similar_text(output_len: int = 100, context: int = 3, input_text: str = None) -> str:
+def generate_similar_text(output_len: int = 100, context: int = 2, input_text: str = None) -> str:
     tokens: list[str] = list()
     unique_words: set[str] = set()
 
